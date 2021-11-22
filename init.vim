@@ -5,13 +5,13 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'Shougo/echodoc.vim' "autocomp
 Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'  " Temas para airline
 call plug#end()
 
 " Luego de esta línea puedes agregar tus configuraciones y mappings
 :set number
 set noshowmode  " No mostrar el modo actual (echodoc hace uso de este espacio)
-
+:PlugUpdate
+:PlugUpgrade
 " Activar echodoc al iniciar Neovim
 let g:echodoc_enable_at_startup = 1
 let g:NERDTreeChDirMode = 2  " Cambia el directorio actual al nodo padre actual
@@ -24,4 +24,3 @@ let g:airline#extensions#tabline#fnamemod = ':t'  " Mostrar sólo el nombre del 
 " Cargar fuente Powerline y símbolos (ver nota)
 let g:airline_powerline_fonts = 1
 
-set noshowmode  " No mostrar el modo actual (ya lo muestra la barra de estado)
