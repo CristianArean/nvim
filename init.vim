@@ -22,8 +22,6 @@ call plug#end()
 :set mouse=a "usar el mouse para desplazarse
 :set clipboard+=unnamedplus
 :set title "la terminal muestra el nombre del archivo
-:PlugUpdate
-:PlugUpgrade
 
 " Activar echodoc al iniciar Neovim
 let g:echodoc_enable_at_startup = 1
