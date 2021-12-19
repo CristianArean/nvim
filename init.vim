@@ -2,11 +2,11 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
 " Aquí irán los plugins a instalar
-Plug 'Shougo/echodoc.vim' "autocomp
+
 Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
-Plug 'navarasu/onedark.nvim' " Onedark
-"plugin para el autocompletado de aca para abajo
+Plug 'navarasu/onedark.nvim'
+"AUTOCOMPLETADO-----------------------
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
@@ -31,15 +31,9 @@ let g:NERDTreeChDirMode = 2  " Cambia el directorio actual al nodo padre actual
 map <F2> :NERDTreeToggle<CR>
 let g:airline#extensions#tabline#enabled = 1  " Mostrar buffers abiertos (como pestañas)
 let g:airline#extensions#tabline#fnamemod = ':t'  " Mostrar sólo el nombre del archivo
-
-" Cargar fuente Powerline y símbolos (ver nota)
-let g:airline_powerline_fonts = 1
-
-let g:onedark_style = 'darker'
-" Vim-Script:
+let g:onedark_style = 'warm'
 colorscheme onedark
-"config para autocompletado de aca para abajo
-
+"configuracion autocompletado----------------------------------
 set completeopt=menu,menuone,noselect
 
 lua <<EOF
@@ -65,6 +59,8 @@ lua <<EOF
         i = cmp.mapping.abort(),
         c = cmp.mapping.close(),
       }),
+      -- Accept currently selected item. If none selected, `select` first item.
+      -- Set `select` to `false` to only confirm explicitly selected items.
       ['<CR>'] = cmp.mapping.confirm({ select = true }),
     },
     sources = cmp.config.sources({
@@ -93,12 +89,4 @@ lua <<EOF
       { name = 'cmdline' }
     })
   })
-
-  -- Setup lspconfig.
-  local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-  -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-  require('lspconfig')['<YOUR_LSP_SERVER>'].setup {
-    capabilities = capabilities
-  }
 EOF
-'------------------------------------------------------------------------------------------------------
