@@ -7,6 +7,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'navarasu/onedark.nvim'
 Plug 'github/copilot.vim'
+Plug 'neovim/nvim-lspconfig' "autocompletition servers
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 " 9000+ Snippets
 Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
@@ -45,4 +46,9 @@ let g:tokyodark_enable_italic = 0
 let g:tokyodark_color_gamma = "1.0"
 colorscheme tokyodark
 "configuracion autocompletado----------------------------------
+lua << EOF
+local lsp = require "lspconfig"
+local coq = require "coq"
+lsp.pyright.setup{coq.lsp_ensure_capabilities()}
 
+EOF
