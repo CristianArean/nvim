@@ -5,13 +5,14 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'tiagovla/tokyodark.nvim'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'navarasu/onedark.nvim'
 Plug 'github/copilot.vim'
 Plug 'neovim/nvim-lspconfig' "autocompletition servers
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 " 9000+ Snippets
 Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
-
+Plug 'luochen1990/rainbow'
 " lua & third party sources -- See https://github.com/ms-jpq/coq.thirdparty
 " Need to **configure separately**
 
@@ -38,17 +39,24 @@ let g:coq_settings = { 'auto_start': v:true }
 map <F2> :NERDTreeToggle<CR>
 let g:airline#extensions#tabline#enabled = 1  " Mostrar buffers abiertos (como pestañas)
 let g:airline#extensions#tabline#fnamemod = ':t'  " Mostrar sólo el nombre del archivo
-let g:onedark_style = 'darker'
-"tokyiodark----------------------------
-let g:tokyodark_transparent_background = 1
-let g:tokyodark_enable_italic_comment = 1
-let g:tokyodark_enable_italic = 0
-let g:tokyodark_color_gamma = "1.0"
-colorscheme tokyodark
+"onehalf theme-----------------------------------------------
+syntax on
+set t_Co=256
+set cursorline
+let g:airline_theme='onehalfdark'
+" lightline
+" let g:lightline = { 'colorscheme': 'onehalfdark' }
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
 "configuracion autocompletado----------------------------------
 lua << EOF
 local lsp = require "lspconfig"
 local coq = require "coq"
 lsp.pyright.setup{coq.lsp_ensure_capabilities()}
+lsp.ccls.setup{coq.lsp_ensure_capabilities()}
 
 EOF
+let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
