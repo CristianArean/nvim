@@ -60,3 +60,8 @@ lsp.ccls.setup{coq.lsp_ensure_capabilities()}
 
 EOF
 let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
+"configuraciones de nerdtree
+map  <C-l> :tabn<CR>
+map  <C-n> :tabnew<CR>
+map  <C-h> :tabp<CR>
+:set shiftwidth=4
