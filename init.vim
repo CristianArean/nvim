@@ -13,6 +13,8 @@ Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 " 9000+ Snippets
 Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 Plug 'luochen1990/rainbow'
+"nord theme----------------------------------------------
+Plug 'EdenEast/nightfox.nvim' " Vim-Plug
 " lua & third party sources -- See https://github.com/ms-jpq/coq.thirdparty
 " Need to **configure separately**
 
@@ -39,18 +41,7 @@ let g:coq_settings = { 'auto_start': v:true }
 map <F2> :NERDTreeToggle<CR>
 let g:airline#extensions#tabline#enabled = 1  " Mostrar buffers abiertos (como pestañas)
 let g:airline#extensions#tabline#fnamemod = ':t'  " Mostrar sólo el nombre del archivo
-"onehalf theme-----------------------------------------------
-syntax on
-set t_Co=256
-set cursorline
-let g:airline_theme='onehalfdark'
-" lightline
-" let g:lightline = { 'colorscheme': 'onehalfdark' }
-if exists('+termguicolors')
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  set termguicolors
-endif
+colorscheme duskfox
 "configuracion autocompletado----------------------------------
 lua << EOF
 local lsp = require "lspconfig"
